@@ -6,28 +6,40 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+      public  static void Main(string[] args)
         {
-            for (int i = 0; i < 10; i++)
-            {
-                Print p = Print1;
-                p(i);
-            }
+
+            Program1.Lol = Print1;
+            Program1.Method1();  
             Console.ReadKey();
         }
 
-        static void Print1(int i)
+        
+
+        public static void Print1(int i)
         {
             Console.WriteLine(i);
         }
 
-        static void Print2(int j)
+        public   static void Print2(int i)
         {
-            Console.WriteLine("* "+j+" *");
+            Console.WriteLine("* "+i+" *");
         }
 
-        delegate void Print(int j);
+        public delegate void Print(int i);
+    }
+
+    public class Program1
+    {
+        public static Program.Print Lol;
+
+        public static void Method1()
+        {
+            Random random = new Random();
+            int a = random.Next(100);
+            Lol(a);
+        }  
     }
 }
